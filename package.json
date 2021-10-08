@@ -1,0 +1,31 @@
+{
+  "name": "do-you-know",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "start": "rails server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "migrate": "rails db:migrate",
+    "seed": "rails db:seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shazy89/Do-You-Know.git"
+  },
+  "author": "Erdoan Shaziman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shazy89/Do-You-Know/issues"
+  },
+  "homepage": "https://github.com/shazy89/Do-You-Know#readme",
+  "dependencies": {
+    "@prettier/plugin-ruby": "^2.0.0-rc3",
+    "prettier": "^2.4.1"
+  }
+}
