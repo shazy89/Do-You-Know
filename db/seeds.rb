@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(username: 'edshazy', password_digest: 'shazy123')
-
-pry
+%w[erdo semra zirli floki miyu].map do |element|
+  @user = User.create(username: element, password: 'shazy123')
+  @progress = Progress.create(user_id: @user.id)
+  @progress.progress_types.create(question_category: 'countries')
+end

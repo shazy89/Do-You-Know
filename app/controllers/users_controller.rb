@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @progress = Progress.create(user_id: @user.id)
+    @progress.progress_types.create(question_category: 'countries')
+
     if @user.save && @progress.save
       render json: @user, status: :created, location: @user
     else
@@ -47,6 +49,6 @@ class UsersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.require(:user).permit(:username, :password_digest)
+    params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end
