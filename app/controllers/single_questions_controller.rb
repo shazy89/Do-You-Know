@@ -1,11 +1,18 @@
 class SingleQuestionsController < ApplicationController
-  before_action :set_single_question, only: [:show, :update, :destroy]
+  before_action :set_single_question, only: %i[show update destroy]
 
   # GET /single_questions
   def index
     @single_questions = SingleQuestion.all
 
     render json: @single_questions
+  end
+
+  # GET /single_iestioms/:questionType
+  def get_by_type
+    @single_question = SingleQuestion.where(questionType: params[:questionType])
+
+    render json: @single_question
   end
 
   # GET /single_questions/1
@@ -18,7 +25,9 @@ class SingleQuestionsController < ApplicationController
     @single_question = SingleQuestion.new(single_question_params)
 
     if @single_question.save
-      render json: @single_question, status: :created, location: @single_question
+      render json: @single_question,
+             status: :created,
+             location: @single_question
     else
       render json: @single_question.errors, status: :unprocessable_entity
     end
@@ -39,13 +48,16 @@ class SingleQuestionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_single_question
-      @single_question = SingleQuestion.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def single_question_params
-      params.require(:single_question).permit(:question, :status, :correctAnswer, :link, :info, :questionType)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_single_question
+    @single_question = SingleQuestion.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def single_question_params
+    params
+      .require(:single_question)
+      .permit(:question, :status, :correctAnswer, :link, :info, :questionType)
+  end
 end
