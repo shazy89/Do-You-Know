@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_012928) do
+ActiveRecord::Schema.define(version: 2021_10_08_013238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 2021_10_08_012928) do
     t.string "optionThree"
     t.string "optionFour"
     t.integer "questionId"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "single_questions", force: :cascade do |t|
+    t.string "question"
+    t.string "status"
+    t.string "correctAnswer"
+    t.string "link"
+    t.string "info"
+    t.string "questionType"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
