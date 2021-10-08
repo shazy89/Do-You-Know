@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_013238) do
+ActiveRecord::Schema.define(version: 2021_10_08_121727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 2021_10_08_013238) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "progress_types", force: :cascade do |t|
+  create_table "progress_types", comment: "question_category", force: :cascade do |t|
     t.integer "progress_id"
-    t.string "type"
+    t.string "question_category"
     t.integer "questionNumber"
     t.integer "correctAnswers"
     t.integer "lastQuestionId"

@@ -1,5 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password_digest
+  attributes :id, :username, :password_digest, :progress
 
-  has_one :progress
+  def progress
+    object.progress.progress_types
+  end
 end
