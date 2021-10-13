@@ -10,7 +10,8 @@ class SingleQuestionsController < ApplicationController
 
   # GET /single_iestioms/:questionType
   def get_by_type
-    @single_question = SingleQuestion.where(questionType: params[:questionType])
+    @single_question =
+      SingleQuestion.where(questionType: params[:questionType]).sort_id
 
     render json: @single_question
   end
